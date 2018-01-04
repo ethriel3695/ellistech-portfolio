@@ -1,3 +1,3 @@
-# JavaScript Development Environment
+# EllisTech Portfolio
 
-This is a template for easily starting JavaScript projects.
+A portfolio for Reuben Ellis and his company EllisTech.
