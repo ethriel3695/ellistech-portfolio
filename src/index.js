@@ -1,33 +1,10 @@
-import './sharedStyles/styles.css';
+/* eslint-disable import/default */
+//import React from 'react';
+import { render } from 'react-dom';
+//import configureStore from './store/configureStore';
+//import routes from './routes.js';
+//import { Provider } from 'react-redux';
 
-import {getUsers, deleteUser} from './api/userApi';
-
-// Populate table of users via API call.
-
-getUsers().then(result => {
-  let usersBody = '';
-
-  result.data.map(user => {
-    usersBody += `<tr>
-    <td><a href='#' data-id='${user.id}' class='deleteUser'>Delete</a></td>
-    <td>${user.id}</td>
-    <td>${user.firstName}</td>
-    <td>${user.lastName}</td>
-    <td>${user.email}</td>
-    </tr>`
-  });
-
-  global.document.getElementById('users').innerHTML = usersBody;
-
-  const deleteLinks = global.document.getElementsByClassName('deleteUser');
-
-  Array.from(deleteLinks, link => {
-    link.onclick = function(event) {
-      const element = event.target;
-      event.preventDefault();
-      deleteUser(element.attributes["data-id"].value);
-      const row = element.parentNode.parentNode;
-      row.parentNode.removeChild(row);
-    }
-  });
-});
+render(
+  document.getElementById('app')
+);
