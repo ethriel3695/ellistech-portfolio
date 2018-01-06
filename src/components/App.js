@@ -1,8 +1,10 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 // import { centeredContainer } from '../sharedStyles/styles.css';
-import { PersonalInfoComponent, ProfessionalProjectsComponent, footer } from 'components';
+import { PersonalInfoComponent } from '../components';
+import { ProfessionalProjectsComponent } from '../components';
+import { footer } from '../components';
 
 class App extends React.Component {
   render () {
@@ -10,22 +12,27 @@ class App extends React.Component {
     console.log(this.props.children);
     return (
       <div>
-        {this.props.children}
+      <PersonalInfoComponent />
+      <ProfessionalProjectsComponent />
+      <footer />
       </div>
     );
   }
 }
 
-// App.propTypes = {
-//   children: PropTypes.object,
-//   loading: PropTypes.bool.isRequired,
-// };
+// <PersonalInfoComponent />
+// <ProfessionalProjectsComponent />
+// <footer/>
 
-// function mapStateToProps (state, ownProps) {
-//   return {
-//     loading: state.ajaxCallsInProgress > 0,
-//   };
-// }
+App.propTypes = {
+  children: PropTypes.object,
+  loading: PropTypes.bool.isRequired
+};
 
-// export default connect(mapStateToProps)(App);
-export default App;
+function mapStateToProps (state, ownProps) {
+  return {
+    loading: state.ajaxCallsInProgress > 0
+  };
+}
+
+export default connect(mapStateToProps)(App);
