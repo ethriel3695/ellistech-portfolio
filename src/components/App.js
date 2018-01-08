@@ -11,10 +11,9 @@ class App extends React.Component {
     console.log('help');
     console.log(this.props.children);
     return (
-      <div>
+      <div className='w3-row-padding'>
       <PersonalInfoComponent />
       <ProfessionalProjectsComponent />
-      <footer />
       </div>
     );
   }

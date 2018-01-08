@@ -52,8 +52,40 @@ const base = {
               localIdentName: '[path]___[name]__[local]___[hash:base64:5]'
             }
           }]
-      }
-    ]
+      },
+      { test: /\.(jpe?g|png|gif|svg|webp)$/i,
+        use: [
+            {
+                loader: 'file-loader',
+                options: {
+                    name: 'assets/img[name].[ext]'
+                }
+            },
+            {
+                loader: 'image-webpack-loader',
+                options: {
+                    query: {
+                        mozjpeg: {
+                            progressive: true,
+                            quality: 65
+                        },
+                        gifsicle: {
+                            optimizationLevel: 7,
+                            interlaced: false
+                        },
+                        optipng: {
+                            optimizationLevel: 7,
+                            interlaced: false
+                        },
+                        webp: {
+                            progressive: true,
+                            quality: 65
+                        }
+                    }
+                }
+          }
+      ]
+    }]
   },
   resolve: {
     modules: [path.resolve(__dirname, './src'), 'node_modules']

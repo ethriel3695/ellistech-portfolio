@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import ProfileImage from '../../utils/P18.jpg';
 // import { centeredContainer } from '../sharedStyles/styles.css';
 
 const PersonalInfoComponent = () => {
-    console.log('is it getting here');
     return (
     <div className='w3-third'>
 
       <div className='w3-white w3-text-grey w3-card-4'>
         <div className='w3-display-container'>
-          <img src='/w3images/avatar_hat.jpg' style={{width:100}} alt='Avatar' />
+          <img src={ProfileImage} style={{width:450, height: 350}} alt='Avatar' />
           <div className='w3-display-bottomleft w3-container w3-text-black'>
-            <h2 id='apps'>{`Jane Doe`}</h2>
+            <h2 id='app'>{`Reuben Ellis`}</h2>
           </div>
         </div>
         <div className='w3-container'>
