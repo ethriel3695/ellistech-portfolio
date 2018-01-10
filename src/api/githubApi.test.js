@@ -13,9 +13,7 @@ describe('userInfo', () => {
     const githubProfile = userInfo(user);
 
     githubProfile.then(function(profile) {
-      console.log(profile);
-      expect(Array.isArray(profile)).to.equal(true);
-      expect(profile.length > 0).to.equal(true);
+      expect(Array.isArray(profile) && profile.length > 0).to.equal(true);
     }).catch(handleError);
     done();
   });
