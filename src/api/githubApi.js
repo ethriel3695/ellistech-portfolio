@@ -15,7 +15,7 @@ async function getGithubProfile (username = 'ethriel3695') {
 
 function getRepos (username = 'ethriel3695') {
   return axios
-    .get(`https://api.github.com/users/${username}/repos${params}&per_page=1`);
+    .get(`https://api.github.com/users/${username}/repos${params}&per_page=4`);
 }
 
 function handleError (error) {
@@ -23,32 +23,28 @@ function handleError (error) {
   return null;
 }
 
-// function sortRepos (user) {
-//   // console.log(user[0].repos.data);
-//   const data = user[0].repos.data;
-//   // const filteredRepos = repos.reduce(function(memo, repo) {
-//   //   if (repo.pushed_at > '2017-12-31T21:56:35Z') {
-//   //     memo.push({
-//   //       name: repo.name,
-//   //       url: repo.url,
-//   //       push: repo.pushed_at
-//   //     });
-//   //   }
-//   //   return memo;
-//   // }, []);
-//   return data.sort((a, b) => {
-//     return a.pushed_at - b.pushed_at;
-//   });
-  // const filteredRepos = data.filter(function(repo) {
-  //   return repo.pushed_at > '2017-12-31T21:56:35Z';
-  // }).map(function(repo) {
-  //   return {
-  //     name: repo.name,
-  //     url: repo.url,
-  //     pushedDate: repo.pushed_at
-  //   };
-  // });
-  // }
+function sortRepos ({data}) {
+
+  return data.sort((a, b) => {
+    const c = new Date(a.pushed_at);
+    const d = new Date(b.pushed_at);
+    return d - c;
+  });
+
+}
+
+function filterRepos (sortedRepos) {
+  console.log(sortedRepos);
+  const filteredRepos = sortedRepos.filter(function(repo, index, arr) {
+    return Array.indexOf(arr) < 3
+  }).map(function(repo) {
+    return {
+      name: repo.name,
+      url: repo.url,
+      pushedDate: repo.pushed_at
+    };
+  });
+}
 
 async function getUserData(user) {
   try {
@@ -57,7 +53,7 @@ async function getUserData(user) {
     const repos = data[1];
     const githubInfo = {
       profile: profile,
-      repos: repos
+      repos: sortRepos(repos)
     };
     // console.log(githubInfo);
     return githubInfo;
