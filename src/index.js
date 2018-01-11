@@ -6,9 +6,10 @@ import configureStore from './store/configureStore';
 import { Provider } from 'react-redux';
 import { loadRepos } from './actions/repositoryActions';
 import { loadPersonalInfo } from './actions/personalInfoActions';
+const user = ['ethriel3695'];
 
 const store = configureStore();
-store.dispatch(loadRepos());
+store.dispatch(loadRepos(user));
 store.dispatch(loadPersonalInfo());
 
 render(

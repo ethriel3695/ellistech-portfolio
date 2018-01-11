@@ -27,6 +27,7 @@ const productionPlugin = new webpack.DefinePlugin({
 
 const base = {
   entry: {
+    entry: 'babel-polyfill',
     // 'webpack-hot-middleware/client?reload=true',
     main: path.resolve(__dirname, 'src/index')
   },

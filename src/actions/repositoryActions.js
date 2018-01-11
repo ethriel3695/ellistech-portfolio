@@ -4,7 +4,6 @@ import { beginAjaxCall } from './ajaxStatusActions';
 import userInfo from '../api/githubApi';
 
 export function loadReposSuccess (repos) {
-  console.log(repos);
   return { type: types.LOAD_REPOS_SUCCESS, repos };
 }
 

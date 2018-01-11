@@ -45,7 +45,7 @@ async function getUserData(user) {
     const filteredRepos = filterRepos(sortedRepos);
 
     const githubInfo = {
-      profile: profile,
+      profile: [profile],
       repos: filteredRepos
     };
     return githubInfo;
