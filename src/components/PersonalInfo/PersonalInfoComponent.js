@@ -12,7 +12,7 @@ const PersonalInfoComponent = (props) => {
 
       <div className='w3-white w3-text-grey w3-card-4'>
         <div className='w3-display-container'>
-          <img src={ProfileImage} style={{width:350, height: 250}} alt='Avatar' />
+          <img src={ProfileImage} style={{width:'100%', height: '100%'}} alt='Avatar' />
         </div>
         <div className='w3-container'>
           <p><i className='fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal' />Software Engineer</p>
@@ -28,32 +28,13 @@ const PersonalInfoComponent = (props) => {
           <p className='w3-large'><b><i className='fa fa-asterisk fa-fw w3-margin-right w3-text-teal'/>Skills</b></p>
           <p>Adobe Photoshop</p>
           <div className='w3-light-grey w3-round-xlarge w3-small'>
-            <div className='w3-container w3-center w3-round-xlarge w3-teal' style={{width:90}}>90%</div>
+            <div className='w3-container w3-center w3-round-xlarge w3-teal' style={{width:'90%'}}>3</div>
           </div>
           <p>Photography</p>
           <div className='w3-light-grey w3-round-xlarge w3-small'>
-            <div className='w3-container w3-center w3-round-xlarge w3-teal' style={{width:80}}>
-              <div className='w3-center w3-text-white'>80%</div>
+            <div className='w3-container w3-center w3-round-xlarge w3-teal' style={{width:'80%'}}>
+              <div className='w3-center w3-text-white'>3</div>
             </div>
-          </div>
-          <p>Illustrator</p>
-          <div className='w3-light-grey w3-round-xlarge w3-small'>
-            <div className='w3-container w3-center w3-round-xlarge w3-teal' style={{width:75}}>75%</div>
-          </div>
-          <p>Media</p>
-          <div className='w3-light-grey w3-round-xlarge w3-small'>
-            <div className='w3-container w3-center w3-round-xlarge w3-teal' style={{width:50}}>50%</div>
-          </div>
-          <br />
-
-          <p className='w3-large w3-text-theme'><b><i className='fa fa-globe fa-fw w3-margin-right w3-text-teal'/>Languages</b></p>
-          <p>English</p>
-          <div className='w3-light-grey w3-round-xlarge'>
-            <div className='w3-round-xlarge w3-teal' style={{height:24, width:350}}/>
-          </div>
-          <p>Italian</p>
-          <div className='w3-light-grey w3-round-xlarge'>
-            <div className='w3-round-xlarge w3-teal' style={{height:24, width:275}}/>
           </div>
           <br />
         </div>
@@ -62,6 +43,17 @@ const PersonalInfoComponent = (props) => {
     </div>
     );
 };
+
+// <p className='w3-large w3-text-theme'><b><i className='fa fa-globe fa-fw w3-margin-right w3-text-teal'/>Languages</b></p>
+//           <p>English</p>
+//           <div className='w3-light-grey w3-round-xlarge'>
+//             <div className='w3-round-xlarge w3-teal' style={{height:24, width:350}}/>
+//           </div>
+//           <p>Italian</p>
+//           <div className='w3-light-grey w3-round-xlarge'>
+//             <div className='w3-round-xlarge w3-teal' style={{height:24, width:275}}/>
+//           </div>
+//           <br />
 
 // App.propTypes = {
 //   children: PropTypes.object,

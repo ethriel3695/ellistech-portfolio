@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as repoActions from '../actions/repositoryActions';
+import * as personalInfoActions from '../actions/personalInfoActions';
 // import { centeredContainer } from '../sharedStyles/styles.css';
 import { PersonalInfoComponent } from '../components';
 import { ProfessionalProjectsComponent } from '../components';
@@ -13,14 +14,17 @@ class App extends React.Component {
     super(props, context);
 
     this.state = {
-      repos: Object.assign({}, this.props.repos)
+      repos: Object.assign({}, this.props.repos),
+      personalInfo: Object.assign({}, this.props.personalInfo)
     };
   }
 
   componentWillReceiveProps (nextProps) {
     console.log(nextProps);
     if (this.props.repos.pushed_at !== nextProps.repos[0].pushed_at) {
-      this.setState({course: Object.assign({}, nextProps.repos)});
+      console.log('is this happening');
+      this.setState({repos: Object.assign({}, nextProps.repos)});
+      this.setState({personalInfo: Object.assign({}, nextProps.personalInfo)});
     }
   }
 
@@ -34,13 +38,12 @@ class App extends React.Component {
   render () {
     const repos = this.props.repos;
     const profile = this.props.profile;
-    // console.log('help');
-    // console.log(repos);
+    const personalInfo = this.props.personalInfo;
     if (repos) {
       return (
       <div className='w3-row-padding'>
-      <PersonalInfoComponent profile={profile}/>
-      <ProfessionalProjectsComponent repos={repos}/>
+      <PersonalInfoComponent profile={profile} personalInfo={personalInfo}/>
+      <ProfessionalProjectsComponent repos={repos} personalInfo={personalInfo}/>
       </div>
     );
     } else {
@@ -55,6 +58,7 @@ App.propTypes = {
   children: PropTypes.object,
   repos: PropTypes.array.isRequired,
   profile: PropTypes.array.isRequired,
+  personalInfo: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
 
@@ -63,15 +67,38 @@ function mapStateToProps (state, ownProps) {
     const repos = [{id: 0, name: 'waiting on API Call', pushed_at: '2018-01-10T21:42:10Z'
     , description: 'This will be filled with a description of a github repository', html_url: 'https://github.com', language: 'language' }];
     const profile = [{id: 0, login: 'ethriel3695', html_url: 'https://www.google.com'}];
+    const personalInfo = [{
+      skills: [{
+        id: 0,
+        skillName: 'JavaScript',
+        experienceLevel: 3
+      }],
+      education: [{
+        id: 0,
+        institution: 'FreeCodeCamp',
+        date: '2017 - Current',
+        degree: 'Bachelor\'s of Science in Information Technology',
+        focus: 'Full-Stack Web Development',
+        tags: ['React, Redux, Responsive Design, JavaScript, Node.js, APIs, CSS, HTML, JQuery, Bootstrap, CSS Grid, Flexbox']
+      }],
+      workExperience: [{
+        id: 0,
+        company: 'CurriQunet',
+        date: '01/30/2017 - Current',
+        description: 'Write SQL to manipulate applications for the client. Maintain C# application and adding features for clients',
+        tags: ['C#', 'ASP.NET MVC', 'T-SQL', 'Oracle-to-SQL Conversion']
+      }]
+    }];
     return {
       repos: repos,
-      profile: profile
+      profile: profile,
+      personalInfo: personalInfo
     }
   } else {
-    // console.log(state.repos[0]);
     return {
       repos: state.repos[0].repos,
-      profile: state.repos[0].profile
+      profile: state.repos[0].profile,
+      personalInfo: state.personalInfo
     };
   };
 };
@@ -84,7 +111,7 @@ function mapStateToProps (state, ownProps) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    actions: bindActionCreators(repoActions, dispatch),
+    actions: bindActionCreators({...repoActions, ...personalInfoActions}, dispatch),
   };
 }
 
