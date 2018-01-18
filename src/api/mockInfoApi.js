@@ -5,48 +5,48 @@ const personalInfo = [{
   skills: [
     {
       id: 1,
-      skillName: 'JavaScript',
-      experienceLevel: 3
-    },
-    {
-      id: 2,
-      skillName: 'Node.js',
-      experienceLevel: 1
-    },
-    {
-      id: 3,
-      skillName: 'React',
-      experienceLevel: 1
-    },
-    {
-      id: 4,
-      skillName: 'Redux',
-      experienceLevel: 1
-    },
-    {
-      id: 5,
-      skillName: 'CSS',
-      experienceLevel: 3
-    },
-    {
-      id: 6,
       skillName: 'HTML',
       experienceLevel: 4
     },
     {
-      id: 7,
-      skillName: 'SQL',
-      experienceLevel: 1
+      id: 2,
+      skillName: 'CSS',
+      experienceLevel: 3
     },
     {
-      id: 8,
+      id: 3,
+      skillName: 'JavaScript',
+      experienceLevel: 3
+    },
+    {
+      id: 4,
       skillName: 'C#',
       experienceLevel: 2
     },
     {
-      id: 9,
+      id: 5,
       skillName: 'ASP.NET MVC',
       experienceLevel: 2
+    },
+    {
+      id: 6,
+      skillName: 'Node.js',
+      experienceLevel: 1
+    },
+    {
+      id: 7,
+      skillName: 'React',
+      experienceLevel: 1
+    },
+    {
+      id: 8,
+      skillName: 'Redux',
+      experienceLevel: 1
+    },
+    {
+      id: 9,
+      skillName: 'SQL',
+      experienceLevel: 1
     }
   ],
   education: [
@@ -56,7 +56,7 @@ const personalInfo = [{
     date: '2017 - Current',
     degree: 'Bachelor\'s of Science in Information Technology',
     focus: 'Full-Stack Web Development',
-    tags: ['React, Redux, Responsive Design, JavaScript, Node.js, APIs, CSS, HTML, JQuery, Bootstrap, CSS Grid, Flexbox']
+    tags: ['React', 'Redux', 'Responsive Design', 'JavaScript', 'Node.js', 'APIs', 'CSS', 'HTML', 'JQuery', 'Bootstrap', 'CSS Grid', 'Flexbox']
   },
   {
     id: 2,
@@ -71,7 +71,8 @@ const personalInfo = [{
     institution: 'Impact Training',
     date: '2013 - Current',
     degree: 'Leadership Experience',
-    focus: 'Communication, Leadership, Teamwork, and Inspiring Success in others'
+    focus: 'Providing a safe place to allow people to grow and learn',
+    tags: ['Communication', 'Leadership', 'Teamwork', 'Inspiring Success in others']
   }],
   workExperience: [
   {

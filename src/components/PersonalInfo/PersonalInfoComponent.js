@@ -4,9 +4,12 @@ import { connect } from 'react-redux';
 import ProfileImage from '../../utils/P18.jpg';
 // import { centeredContainer } from '../sharedStyles/styles.css';
 
+
 const PersonalInfoComponent = (props) => {
   const profile = props.profile[0];
-  console.log(profile);
+  let skills = props.personalInfo[0].skills;
+  // console.log(profile);
+  // console.log(personalInfo);
     return (
     <div className='w3-third'>
 
@@ -24,19 +27,16 @@ const PersonalInfoComponent = (props) => {
           <p><i className='fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal'/>{profile.bio}</p>
           <p><i className='fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal'/>(208)569-7538</p>
           <hr />
-
           <p className='w3-large'><b><i className='fa fa-asterisk fa-fw w3-margin-right w3-text-teal'/>Skills</b></p>
-          <p>Adobe Photoshop</p>
-          <div className='w3-light-grey w3-round-xlarge w3-small'>
-            <div className='w3-container w3-center w3-round-xlarge w3-teal' style={{width:'90%'}}>3</div>
-          </div>
-          <p>Photography</p>
-          <div className='w3-light-grey w3-round-xlarge w3-small'>
-            <div className='w3-container w3-center w3-round-xlarge w3-teal' style={{width:'80%'}}>
-              <div className='w3-center w3-text-white'>3</div>
+          {skills.map((skill, index) => {
+          return (
+            <div key={`${skill.id}(${index})`}>{skill.skillName}
+              <div className='w3-light-grey w3-round-xlarge w3-small'>
+                <div className='w3-container w3-center w3-round-xlarge w3-teal' style={{width:`${skill.experienceLevel}0%`}}>{skill.experienceLevel}</div>
+              </div>
             </div>
-          </div>
-          <br />
+          )})}
+        <br />
         </div>
       </div>
       <br />

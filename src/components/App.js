@@ -19,12 +19,21 @@ class App extends React.Component {
     };
   }
 
+  componentDidCatch(error, info) {
+    console.log(error, info);
+  }
+
   componentWillReceiveProps (nextProps) {
     console.log(nextProps);
     if (this.props.repos.pushed_at !== nextProps.repos[0].pushed_at) {
       console.log('is this happening');
       this.setState({repos: Object.assign({}, nextProps.repos)});
-      this.setState({personalInfo: Object.assign({}, nextProps.personalInfo)});
+    }
+    console.log(nextProps.personalInfo);
+    if (nextProps.personalInfo) {
+      if(nextProps.personalInfo.length > 0) {
+        this.setState({personalInfo: Object.assign({}, nextProps.personalInfo)});
+      }
     }
   }
 
@@ -39,7 +48,7 @@ class App extends React.Component {
     const repos = this.props.repos;
     const profile = this.props.profile;
     const personalInfo = this.props.personalInfo;
-    if (repos) {
+    if (repos && personalInfo.length > 0) {
       return (
       <div className='w3-row-padding'>
       <PersonalInfoComponent profile={profile} personalInfo={personalInfo}/>
