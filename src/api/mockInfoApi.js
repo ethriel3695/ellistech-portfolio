@@ -56,7 +56,7 @@ const personalInfo = [{
     date: '2017 - Current',
     degree: 'Bachelor\'s of Science in Information Technology',
     focus: 'Full-Stack Web Development',
-    tags: ['React', 'Redux', 'Responsive Design', 'JavaScript', 'Node.js', 'APIs', 'CSS', 'HTML', 'JQuery', 'Bootstrap', 'CSS Grid', 'Flexbox']
+    tags: ['React', 'Redux', 'JavaScript', 'Node.js', 'APIs', 'CSS', 'HTML', 'JQuery', 'Bootstrap', 'CSS Grid', 'Flexbox']
   },
   {
     id: 2,
@@ -64,7 +64,7 @@ const personalInfo = [{
     date: '2013 - 2016',
     degree: 'Bachelor\'s of Science in Information Technology',
     focus: 'Specialized Focus on Software Development',
-    tags: ['HTML', 'CSS', 'SQL', 'C#', 'JQuery', 'C++', 'Java', 'Android Development', 'Web Development']
+    tags: ['HTML', 'CSS', 'SQL', 'C#', 'JQuery', 'C++', 'Java', 'Android', 'Web Development']
   },
   {
     id: 3,
@@ -72,14 +72,14 @@ const personalInfo = [{
     date: '2013 - Current',
     degree: 'Leadership Experience',
     focus: 'Providing a safe place to allow people to grow and learn',
-    tags: ['Communication', 'Leadership', 'Teamwork', 'Inspiring Success in others']
+    tags: ['Communication', 'Leadership', 'Teamwork']
   }],
   workExperience: [
   {
     id: 1,
     company: 'CurriQunet',
     date: '01/30/2017 - Current',
-    description: 'Write SQL to manipulate applications for the client. Maintain C# application and adding features for clients',
+    description: 'Write SQL to manipulate applications for the client. Maintain C# applications and adding features for clients',
     tags: ['C#', 'ASP.NET MVC', 'T-SQL', 'Oracle-to-SQL Conversion']
   },
   {
@@ -93,7 +93,7 @@ const personalInfo = [{
       'Used the ASP.NET MVC framework to create web applications',
       'Used JQuery and the Bootstrap framework for design',
       'Designed technical documentation for various services: Microsoft Azure, GE’s Predix'],
-    tags: ['C#', 'ASP.NET MVC', '.NetCore', 'T-SQL', 'JavaScript', 'Node.js', 'Ajax', 'Microsoft Azure', 'Predix']
+    tags: ['C#', 'ASP.NET MVC', '.NetCore', 'T-SQL', 'JavaScript', 'Node.js', 'Ajax', 'Azure']
   }]
 }];
 
