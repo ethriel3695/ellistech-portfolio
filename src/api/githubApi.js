@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const id = '30d6262f44b5ef0c15e5';
-const secret = '1ec3f5b73343efe6850e55b0a664d590f2803164';
+const id = 'YOUR_CLIENT_ID';
+const secret = 'YOUR_SECRET_ID';
 const params = `?client_id=${id}&client_secret=${secret}`;
 
 async function getGithubProfile (username = 'ethriel3695') {

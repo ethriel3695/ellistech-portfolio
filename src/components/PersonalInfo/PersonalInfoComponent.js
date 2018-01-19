@@ -20,12 +20,12 @@ const PersonalInfoComponent = (props) => {
         </div>
         <div className='w3-container'>
           <p><i className='fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal' />Software Engineer</p>
-            <p><i className='fa fa-home fa-fw w3-margin-right w3-large w3-text-teal'/>{profile.name}</p>
-            <p><i className='fa fa-home fa-fw w3-margin-right w3-large w3-text-teal'/>{profile.company}</p>
+            <p><i className='fa fa-id-badge fa-fw w3-margin-right w3-large w3-text-teal'/>{profile.name}</p>
+            <p><i className='fa fa-building fa-fw w3-margin-right w3-large w3-text-teal'/>{profile.company}</p>
             <p><i className='fa fa-home fa-fw w3-margin-right w3-large w3-text-teal'/>{profile.location}</p>
           <p><i className='fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal'/>{profile.email}</p>
-          <p><i className='fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal'/>{profile.public_repos}</p>
-          <p><i className='fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal'/>{profile.bio}</p>
+          <p><i className='fa fa-code fa-fw w3-margin-right w3-large w3-text-teal'/>{`Number of Repositories: ${profile.public_repos}`}</p>
+          <p><i className='fa fa-fire fa-fw w3-margin-right w3-large w3-text-teal'/>{profile.bio}</p>
           <p><i className='fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal'/>(208)569-7538</p>
           <hr />
           <p className='w3-large'><b><i className='fa fa-asterisk fa-fw w3-margin-right w3-text-teal'/>Skills</b></p>
