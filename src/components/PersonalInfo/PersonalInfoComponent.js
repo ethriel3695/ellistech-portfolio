@@ -8,6 +8,7 @@ import ProfileImage from '../../utils/P18.jpg';
 const PersonalInfoComponent = (props) => {
   const profile = props.profile[0];
   let skills = props.personalInfo[0].skills;
+  let yearsText = '';
   // console.log(profile);
   // console.log(personalInfo);
     return (
@@ -29,10 +30,15 @@ const PersonalInfoComponent = (props) => {
           <hr />
           <p className='w3-large'><b><i className='fa fa-asterisk fa-fw w3-margin-right w3-text-teal'/>Skills</b></p>
           {skills.map((skill, index) => {
+            if (skill.experienceLevel === 1) {
+                yearsText = 'year';
+              } else {
+                yearsText = 'years';
+              }
           return (
             <div key={`${skill.id}(${index})`}>{skill.skillName}
               <div className='w3-light-grey w3-round-xlarge w3-small'>
-                <div className='w3-container w3-center w3-round-xlarge w3-teal' style={{width:`${skill.experienceLevel}0%`}}>{skill.experienceLevel}</div>
+                <div className='w3-container w3-center w3-round-xlarge w3-teal' style={{width:`${skill.experienceLevel}9%`}}>{`${skill.experienceLevel} ${yearsText}`}</div>
               </div>
             </div>
           )})}
