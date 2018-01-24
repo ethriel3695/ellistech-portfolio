@@ -2,6 +2,16 @@ body {
   font-family: Sans-Serif;
 }
 
-table th {
-  padding: 5px;
+.flexContainer {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.childContainer {
+  display: flex;
+  flex-flow: row wrap;
+  background-color:#009688;
+  color: #ffffff;
+  margin: 2px;
+  padding: 2px;
 }

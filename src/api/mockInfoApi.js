@@ -79,8 +79,8 @@ const personalInfo = [{
     id: 1,
     company: 'CurriQunet',
     date: '01/30/2017 - Current',
-    description: 'Write SQL to manipulate applications for the client. Maintain C# applications and adding features for clients',
-    tags: ['C#', 'ASP.NET MVC', 'T-SQL', 'Oracle-to-SQL Conversion']
+    description: ['Write SQL to manipulate applications for the client.', 'Maintain C# applications and adding features for clients'],
+    tags: ['C#', 'ASP.NET MVC', 'T-SQL', 'Oracle-SQL Conversion']
   },
   {
     id: 2,

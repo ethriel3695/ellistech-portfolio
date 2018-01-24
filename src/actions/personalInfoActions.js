@@ -3,7 +3,6 @@ import { beginAjaxCall } from './ajaxStatusActions';
 import personalInfo from '../api/mockInfoApi';
 
 export function loadPersonalInfoSuccess (personalInfo) {
-  // console.log(personalInfo);
   return {type: types.LOAD_PERSONALINFO_SUCCESS, personalInfo};
 }
 

@@ -1,0 +1,7 @@
+.container {
+  composes: flexContainer from 'sharedStyles/styles.css';
+}
+
+.child {
+  composes: childContainer from 'sharedStyles/styles.css';
+}

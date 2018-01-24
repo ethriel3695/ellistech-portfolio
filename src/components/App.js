@@ -24,25 +24,15 @@ class App extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    console.log(nextProps);
     if (this.props.repos.pushed_at !== nextProps.repos[0].pushed_at) {
-      console.log('is this happening');
       this.setState({repos: Object.assign({}, nextProps.repos)});
     }
-    console.log(nextProps.personalInfo);
     if (nextProps.personalInfo) {
       if(nextProps.personalInfo.length > 0) {
         this.setState({personalInfo: Object.assign({}, nextProps.personalInfo)});
       }
     }
   }
-
-  // componentDidMount() {
-  //   this.setState = {
-  //     repos: this.props.repos
-  //   }
-  // }
-
 
   render () {
     const repos = this.props.repos;
@@ -94,7 +84,7 @@ function mapStateToProps (state, ownProps) {
         id: 0,
         company: 'CurriQunet',
         date: '01/30/2017 - Current',
-        description: 'Write SQL to manipulate applications for the client. Maintain C# application and adding features for clients',
+        description: ['Write SQL to manipulate applications for the client.', 'Maintain C# application and adding features for clients'],
         tags: ['C#', 'ASP.NET MVC', 'T-SQL', 'Oracle-to-SQL Conversion']
       }]
     }];
@@ -111,12 +101,6 @@ function mapStateToProps (state, ownProps) {
     };
   };
 };
-
-// function mapStateToProps (state, ownProps) {
-//   return {
-//     loading: state.ajaxCallsInProgress > 0
-//   };
-// }
 
 function mapDispatchToProps (dispatch) {
   return {

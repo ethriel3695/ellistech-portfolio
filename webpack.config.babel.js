@@ -9,7 +9,7 @@ const isProduction = LAUNCH_COMMAND === 'production';
 process.env.BABEL_ENV = LAUNCH_COMMAND;
 
 const PATHS = {
-  app: path.join(__dirname, 'src'),
+  app: path.resolve(__dirname, 'src/index'),
   build: path.join(__dirname, 'dist')
 };
 
@@ -26,11 +26,11 @@ const productionPlugin = new webpack.DefinePlugin({
 });
 
 const base = {
-  entry: {
-    entry: 'babel-polyfill',
-    // 'webpack-hot-middleware/client?reload=true',
-    main: path.resolve(__dirname, 'src/index')
-  },
+  entry: [
+    'babel-polyfill',
+    'webpack-hot-middleware/client?reload=true',
+    PATHS.app
+  ],
   target: 'web',
   output: {
     path: PATHS.build,

@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import { centeredContainer } from '../sharedStyles/styles.css';
+import { container, child } from './styles.css';
 
 const ProfessionalProjectsComponent = (props) => {
   const repositories = props.repos;
-  // console.log(props);
-  // console.log(props.personalInfo);
-  // const workExperience = props.personalInfo[0].workExperience;
   const education = props.personalInfo[0].education;
   const workExperience = props.personalInfo[0].workExperience;
     return (
@@ -37,10 +34,10 @@ const ProfessionalProjectsComponent = (props) => {
           <h6 className='w3-text-teal'><i className='fa fa-calendar fa-fw w3-margin-right'/>{learning.date}</h6>
           <p>{learning.degree}</p>
           <p>{learning.focus}</p>
-          <div style={{flex: 1}}>
+          <div className={container}>
           {learning.tags.map((tag, index) => {
             return (
-              <span style={{backgroundColor: '#009688', color: '#ffffff', padding: 3, margin: 2, flexWrap: 'wrap'}} key={`(${index})`}>{tag}</span>
+              <span className={child} key={`(${index})`}>{tag}</span>
             )
           })}
           </div>
@@ -55,11 +52,15 @@ const ProfessionalProjectsComponent = (props) => {
         <div className='w3-container' key={`${work.Id}(${index})`}>
           <h5 className='w3-opacity'><b>{work.company}</b></h5>
           <h6 className='w3-text-teal'><i className='fa fa-calendar fa-fw w3-margin-right'/>{work.date}</h6>
-          <p>{work.description}</p>
-          <div style={{flex: 1}}>
+          {work.description.map((tasks, index) => {
+            return (
+              <p key={`(${index})`}>{tasks}</p>
+            )
+          })}
+          <div className={container}>
           {work.tags.map((tag, index) => {
             return (
-              <span style={{backgroundColor: '#009688', color: '#ffffff', padding: 3, margin: 2, flexWrap: 'wrap'}} key={`(${index})`}>{tag}</span>
+              <span className={child} key={`(${index})`}>{tag}</span>
             )
           })}
           </div>
@@ -71,18 +72,4 @@ const ProfessionalProjectsComponent = (props) => {
     );
   };
 
-
-
-// App.propTypes = {
-//   children: PropTypes.object,
-//   loading: PropTypes.bool.isRequired,
-// };
-
-// function mapStateToProps (state, ownProps) {
-//   return {
-//     loading: state.ajaxCallsInProgress > 0,
-//   };
-// }
-
-//export default connect(mapStateToProps)(App);
 export default ProfessionalProjectsComponent;

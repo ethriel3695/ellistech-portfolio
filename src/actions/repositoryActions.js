@@ -1,6 +1,5 @@
 import * as types from './actionTypes';
 import { beginAjaxCall } from './ajaxStatusActions';
-// import repos from '../api/mockRepoApi';
 import userInfo from '../api/githubApi';
 
 export function loadReposSuccess (repos) {
