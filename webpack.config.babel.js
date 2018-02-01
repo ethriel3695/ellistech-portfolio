@@ -2,6 +2,7 @@ import webpack from 'webpack';
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import WebpackMd5Hash from 'webpack-md5-hash';
+import dotenvWebpack from 'dotenv-webpack';
 
 const LAUNCH_COMMAND = process.env.npm_lifecycle_event;
 
@@ -28,7 +29,6 @@ const productionPlugin = new webpack.DefinePlugin({
 const base = {
   entry: [
     'babel-polyfill',
-    'webpack-hot-middleware/client?reload=true',
     PATHS.app
   ],
   target: 'web',
@@ -104,7 +104,8 @@ const developmentConfig = {
   plugins: [
     HTMLWebpackPluginConfig,
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
+    new dotenvWebpack()
   ]
 };
 
@@ -113,7 +114,8 @@ var productionConfig = {
   plugins: [productionPlugin,
     new WebpackMd5Hash(),
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.UglifyJsPlugin(),
+    new dotenvWebpack()
   ]
 };
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const id = 'YOUR_CLIENT_ID';
-const secret = 'YOUR_SECRET_ID';
+const id = process.env.YOUR_CLIENT_ID || 'YOUR_CLIENT_ID';
+const secret = process.env.YOUR_SECRET_ID || 'YOUR_SECRET_ID';
 const params = `?client_id=${id}&client_secret=${secret}`;
 
 async function getGithubProfile (username = 'ethriel3695') {
@@ -16,6 +16,19 @@ async function getGithubProfile (username = 'ethriel3695') {
 function getRepos (username = 'ethriel3695') {
   return axios
     .get(`https://api.github.com/users/${username}/repos${params}&per_page=100`);
+}
+
+const githubDevPreviewHeader = {
+  'Content-type': 'application/vnd.github.mercy-preview+json'
+};
+
+async function getTags (user, repoName) {
+  try {
+    const tags = await axios.get(`https://api.github.com/repos/${user}/${repoName}/topics${params}`, {headers: {githubDevPreviewHeader}});
+      return tags;
+  } catch (error) {
+    console.log(`Error in topic data ${error}`);
+  }
 }
 
 function handleError (error) {
@@ -43,6 +56,14 @@ async function getUserData(user) {
     const repos = data[1];
     const sortedRepos = sortRepos(repos);
     const filteredRepos = filterRepos(sortedRepos);
+    console.log(filteredRepos);
+    const tagResults = [];
+    filteredRepos.map((repo) => {
+      tagResults.push(repo.name);
+    })
+    console.log(tagResults);
+    const tags = await axios.all([getTags(user, tagResults[0])]);
+    console.log(tags);
 
     const githubInfo = {
       profile: [profile],
