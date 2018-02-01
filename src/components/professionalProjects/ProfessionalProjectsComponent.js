@@ -6,6 +6,7 @@ import { container, child } from './styles.css';
 const ProfessionalProjectsComponent = (props) => {
   const repositories = props.repos;
   const education = props.personalInfo[0].education;
+  const tags = props.tags[0];
   const workExperience = props.personalInfo[0].workExperience;
     return (
     <div className='w3-twothird'>
@@ -19,7 +20,16 @@ const ProfessionalProjectsComponent = (props) => {
             <p className='w3-text-teal'><strong>{`Latest Push Date:`}</strong></p>
             <h6 className='w3-text-teal'><i className='fa fa-calendar fa-fw w3-margin-right'/>{`${pushedDate}`}</h6>
             <p>{repo.description}</p>
-            <span style={{backgroundColor: '#009688', color: '#ffffff', padding: 3}}>{repo.language}</span>
+             <div className={container}>
+              {tags.map((tagsObject) =>
+                {
+                  return tagsObject.names.map((tag, index) => {
+                    console.log(tag);
+                return (
+                  <span className={child} key={`(${index})`}>{tag}</span>
+                )
+              })})}
+              </div>
             <hr />
           </div>
         )})}

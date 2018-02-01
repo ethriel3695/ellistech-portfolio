@@ -10,10 +10,6 @@ const port = process.env.PORT || 3030;
 const app = express();
 const compiler = webpack(config);
 
-const githubDevPreviewHeader = {
-  'Content-type': 'application/vnd.github.mercy-preview+json'
-};
-
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
   publicPath: config.output.publicPath
@@ -28,7 +24,7 @@ app.all('*', function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET, PUT, PATCH, POST, DELETE');
   res.header('Access-Control-Allow-Headers', req.header('access-control-request-headers'));
-  res.header('Access-Control-Allow-Headers', githubDevPreviewHeader);
+  res.header('Access-Control-Allow-Headers', res.header('Content-type', 'application/vnd.github.mercy-preview+json'));
 
   if (req.method === 'OPTIONS') {
     // CORS Preflight

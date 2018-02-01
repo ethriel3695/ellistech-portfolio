@@ -37,12 +37,13 @@ class App extends React.Component {
   render () {
     const repos = this.props.repos;
     const profile = this.props.profile;
+    const tags = this.props.tags;
     const personalInfo = this.props.personalInfo;
     if (repos && personalInfo.length > 0) {
       return (
       <div className='w3-row-padding'>
       <PersonalInfoComponent profile={profile} personalInfo={personalInfo}/>
-      <ProfessionalProjectsComponent repos={repos} personalInfo={personalInfo}/>
+      <ProfessionalProjectsComponent repos={repos} personalInfo={personalInfo} tags={tags}/>
       </div>
     );
     } else {
@@ -57,6 +58,7 @@ App.propTypes = {
   children: PropTypes.object,
   repos: PropTypes.array.isRequired,
   profile: PropTypes.array.isRequired,
+  tags: PropTypes.array.isRequired,
   personalInfo: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
@@ -66,6 +68,7 @@ function mapStateToProps (state, ownProps) {
     const repos = [{id: 0, name: 'waiting on API Call', pushed_at: '2018-01-10T21:42:10Z'
     , description: 'This will be filled with a description of a github repository', html_url: 'https://github.com', language: 'language' }];
     const profile = [{id: 0, login: 'ethriel3695', html_url: 'https://www.google.com'}];
+    const tags = [[{names: ['react']}, {names: ['redux']}, {names: ['javascript']}]];
     const personalInfo = [{
       skills: [{
         id: 0,
@@ -91,12 +94,14 @@ function mapStateToProps (state, ownProps) {
     return {
       repos: repos,
       profile: profile,
+      tags: tags,
       personalInfo: personalInfo
     }
   } else {
     return {
       repos: state.repos[0].repos,
       profile: state.repos[0].profile,
+      tags: state.repos[0].tags,
       personalInfo: state.personalInfo
     };
   };

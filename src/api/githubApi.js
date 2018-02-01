@@ -19,13 +19,17 @@ function getRepos (username = 'ethriel3695') {
 }
 
 const githubDevPreviewHeader = {
-  'Content-type': 'application/vnd.github.mercy-preview+json'
+  headers: {'Accept': 'application/vnd.github.mercy-preview+json'}
 };
 
-async function getTags (user, repoName) {
+async function getTags (user, repoNames) {
+  const tagsData = [];
   try {
-    const tags = await axios.get(`https://api.github.com/repos/${user}/${repoName}/topics${params}`, {headers: {githubDevPreviewHeader}});
-      return tags;
+    await Promise.all(repoNames.map(async (repoName) => {
+    const tags = await axios.get(`https://api.github.com/repos/${user}/${repoName}/topics${params}`, githubDevPreviewHeader);
+      tagsData.push(tags.data);
+    }))
+    return tagsData;
   } catch (error) {
     console.log(`Error in topic data ${error}`);
   }
@@ -56,18 +60,15 @@ async function getUserData(user) {
     const repos = data[1];
     const sortedRepos = sortRepos(repos);
     const filteredRepos = filterRepos(sortedRepos);
-    console.log(filteredRepos);
     const tagResults = [];
     filteredRepos.map((repo) => {
       tagResults.push(repo.name);
     })
-    console.log(tagResults);
-    const tags = await axios.all([getTags(user, tagResults[0])]);
-    console.log(tags);
-
+    const tags = await axios.all([getTags(user, tagResults)]);
     const githubInfo = {
       profile: [profile],
-      repos: filteredRepos
+      repos: filteredRepos,
+      tags: tags
     };
     return githubInfo;
   } catch (error) {
